@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Menu Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <style>
+        body{
+	           background-color:cadetblue;
+         }
+         .container{
+	          width:400px;
+			  margin-top:320px;
+			  border:1px solid black;
+			  border-radius:15px;
+			  background-color:ghostwhite;
+			  
+         }
+         h3{
+	           color:black;
+	           margin-top:30px;
+	           
+         }
+         h1{
+			color:darkcyan;
+			font-size:50px;
+		}
+     </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Menu</h1>
+        
+        <a th:href="@{/redirect}"><i class="fa fa-fw fa-user"></i><h3>Enter Job</h3></a>
+        <a th:href="@{/users}"><i class="fa fa-fw fa-user"></i><h3>View Users</h3></a>
+        <a th:href="@{/jobs}"><i class="fa fa-fw fa-user"></i><h3>View jobs</h3></a>
+    </div>
+     
+</body>
+</html>

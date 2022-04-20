@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+     <style> 
+       body{
+	            background-color:cadetblue;
+         }
+       header{   
+	             padding:20px;
+	             background-color:black;
+	             color:white;
+	             display:flex;
+	            
+	             
+	             
+       }
+       span{
+	         font-size:30px;
+	         margin-left:700px;
+	    }
+	    h3{
+		    color:black;
+	   }
+	   
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <form th:action="@{/logout}" method="post">
+            <span>
+                Welcome <b>[[${#request.userPrincipal.principal.Name}]]</b>
+            </span>
+           
+            <input type="submit" value="Sign Out" style="margin-left:600px;" />
+            
+            
+        </form>
+    </header>
+   
+<div class="container text-center">
+    <div>
+        <h1>List of Users</h1>
+    </div>
+     
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>E-mail</th>
+                    <th>Name</th>
+    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user: ${listUsers}">
+                    <td th:text="${user.id}">User ID</td>
+                    <td th:text="${user.email}">E-mail</td>
+                    <td th:text="${user.name}">Name</td>
+                </tr>
+                
+            </tbody>
+            <a th:href="@{/jobs}"><i class="fa fa-fw fa-user"></i><h3>view jobs</h3></a>
+        </table>
+    </div>
+</div>
+</body>
+</html>

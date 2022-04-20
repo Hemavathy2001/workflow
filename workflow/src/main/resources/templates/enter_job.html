@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <style>
+        body{
+	          background-color:cadetblue;
+        }
+        .assign{
+	         padding:30px;
+        }
+       
+     </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Enter Job</h1>
+        
+       <!-- <a th:href="@{/redirect}"><i class="fa fa-fw fa-user"></i><h3>click here</h3></a>--> 
+       
+       <div class="container text-center">
+     
+        <form th:action="@{/process_save}" th:object="${job}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <div class="col-8">
+                    <textarea th:field="*{menu}" class="form-control"
+                            required rows="20" cols="20" ></textarea>
+                </div>
+                 
+                <div class="assign">
+                <h2> Assign to: </h2>
+                <input type="text" th:field="*{assign}" class="form-control" 
+                            required minlength="2" maxlength="20"/>
+                            
+                </div >
+                </div>
+            </div>
+            
+             <div>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+     
+    </div>
+     
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style> 
+       body{
+	     background-color:cadetblue;
+      }
+      i{
+			
+			color:green;
+		}
+		.container{
+			margin-top:320px;
+		}
+		a{
+			text-decoration:none;
+			color:ghostwhite;
+		}
+
+     
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h3>You have saved your job  successfully!</h3>
+         <i class='fa fa-check' style='font-size:160px; color:green'></i>
+        <a th:href="@{/users}"><h3>Click here to view users</h3></a>
+    </div>
+     
+</body>
+</html>
