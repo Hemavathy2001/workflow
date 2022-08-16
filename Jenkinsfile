@@ -15,7 +15,8 @@ pipeline{
 	}
 	stage("test") {
 	steps{
-	echo 'testing the application.... this is $NAME $TOM'
+		echo 'testing the application.... '
+		sh ' echo this is $NAME $AGE... '
 	}
 	}
 	stage("deploy") {
