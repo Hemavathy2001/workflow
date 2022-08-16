@@ -4,6 +4,11 @@ pipeline{
 	stage("build") {
 	steps{
 	echo 'building the application....'
+	sh ''' 
+	 
+	    echo 'hello world' 
+	   
+	   '''
 	}
 	}
 	stage("test") {
