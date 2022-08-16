@@ -21,7 +21,7 @@ pipeline{
 	retry(3){
 	sh ' not going to work :c '
 	}
-	timeout(time:3 unit:'SECONDS'){
+	timeout(time:3 , unit:'SECONDS'){
 		sh' sleep 5'
 	}
 	}
