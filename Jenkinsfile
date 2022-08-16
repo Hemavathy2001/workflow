@@ -1,8 +1,8 @@
 pipeline{	
 	agent any
 	 environment {
-		DISABLE_AUTH = 'true'
-		DB_ENGINE    = 'sqlite'
+		NAME = 'Tom'
+		AGE    = '12'
        }
 	stages{
 	stage("build") {
@@ -16,8 +16,8 @@ pipeline{
 	stage("test") {
 	steps{
 		echo 'testing the application.... '
-		 echo "Database engine is ${DB_ENGINE}"
-                 echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+		echo " Name is ${NAME} " 
+		echo "Age is ${AGE}"
 	}
 	}
 	stage("deploy") {
