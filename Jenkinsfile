@@ -16,18 +16,15 @@ pipeline{
 	echo 'testing the application....'
 	}
 	}
-	stage("Timeout"){
+	stage("deploy") {
 	steps{
 	retry(3){
-	sh '  going to work  '
+	   sh 'going to work'
 	}
+		
 	timeout(time:3 , unit:'SECONDS'){
 		sh' sleep 5'
 	}
-	}
-	}
-	stage("deploy") {
-	steps{
 	echo 'deploying the application....'
 	}
 	}
