@@ -1,19 +1,21 @@
 pipeline{	
 	agent any
+	environment{
+		NAME = Tom 
+		AGE = 21
+	}
 	stages{
 	stage("build") {
 	steps{
 	echo 'building the application....'
-	sh ''' 
-	 
-	    echo 'hello world' 
-	   
+	sh ''' 	 
+	    echo 'hello world' 	   
 	   '''
 	}
 	}
 	stage("test") {
 	steps{
-	echo 'testing the application....'
+	echo 'testing the application.... this is $NAME $TOM'
 	}
 	}
 	stage("deploy") {
