@@ -19,7 +19,7 @@ pipeline{
 	stage("deploy") {
 	steps{
 	retry(3){
-	   sh 'going to work'
+	   sh 'echo going to work'
 	}
 		
 	timeout(time:3 , unit:'SECONDS'){
