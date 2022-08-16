@@ -16,6 +16,13 @@ pipeline{
 	echo 'testing the application....'
 	}
 	}
+	stage("Timeout"){
+		steps{
+			retry(3){
+				sh ' not going to work :c '
+			}
+		}
+		}
 	stage("deploy") {
 	steps{
 	echo 'deploying the application....'
