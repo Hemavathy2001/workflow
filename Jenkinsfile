@@ -8,12 +8,12 @@ pipeline{
 	}
 	stage("test") {
 	steps{
-	echo 'building the application....'
+	echo 'testing the application....'
 	}
 	}
 	stage("deploy") {
 	steps{
-	echo 'building the application....'
+	echo 'deploying the application....'
 	}
 	}
 	}
