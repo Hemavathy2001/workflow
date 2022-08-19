@@ -4,33 +4,30 @@ pipeline{
 		NAME = 'Tom'
 		AGE    = '12'
        }
+	docker {
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2' 
+        }
 	stages{
-	stage("build") {
-	steps{
-	echo 'building the application....'
-	sh ''' 	 
-	    echo 'hello world' 	   
-	   '''
-	}
-	}
-	stage("test") {
-	steps{
-		echo 'testing the application.... '
-		echo " Name is ${NAME} " 
-		echo "Age is ${AGE}"
-	}
-	}
-	stage("deploy") {
-	steps{
-	retry(3){
-	   sh 'echo going to work'
-	}
-		
-	timeout(time:3 , unit:'SECONDS'){
-		sh' sleep 5'
-	}
-	echo 'deploying the application....'
-	}
-	}
-	}
-	}
+		stage("build") {
+			steps{
+			echo 'building the application....'
+			sh 'mvn -B -DskipTests clean package' 
+			}
+		}
+		stage("test") {
+			steps{
+				echo 'testing the application.... '
+				echo " Name is ${NAME} " 
+				echo "Age is ${AGE}"
+				 sh 'mvn test'
+			}
+		}
+		stage("deploy") {
+			steps{
+				echo 'deploying the application....'
+				sh './jenkins/scripts/deliver.sh'
+			     }
+		   }
+       }
+}
