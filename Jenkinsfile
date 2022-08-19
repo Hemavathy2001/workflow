@@ -1,36 +1,23 @@
-pipeline{	
-	agent any
-	environment {
-	NAME = 'Tom'
-	AGE    = '12'
-	}
-	stages{
-	stage("build") {
-	steps{
-	echo 'building the application....'
-	sh '''
-	echo 'hello world'
-	'''
-	}
-	}
-	stage("test") {
-	steps{
-	echo 'testing the application.... '
-	echo " Name is ${NAME} "
-	echo "Age is ${AGE}"
-	}
-	}
-	stage("deploy") {
-	steps{
-	retry(3){
-	sh 'echo going to work'
-	}
-	
-	timeout(time:3 , unit:'SECONDS'){
-	sh' sleep 5'
-	}
-	echo 'deploying the application....'
-	}
-	}
-	}
-	}
+pipeline {
+    agent any
+    tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
+    }
+    stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
+            }
+        }
+    }
+}
