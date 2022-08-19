@@ -1,23 +1,29 @@
-pipeline {
-    agent any
-    tools {
-        maven 'Jenkins-maven'
-    
-    }
-    stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
-            }
-        }
-
-        stage ('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-    }
-}
+pipeline{	
+	agent any
+	environment {
+	NAME = 'Tom'
+	AGE    = '12'
+	}
+	stages{
+	stage("build") {
+	steps{
+	echo 'building the application....'
+	sh '''
+	echo 'hello world'
+	'''
+	}
+	}
+	stage("test") {
+	steps{
+	echo 'testing the application.... '
+	echo " Name is ${NAME} "
+	echo "Age is ${AGE}"
+	}
+	}
+	stage("deploy") {
+	steps{
+	echo 'deploying the application....'
+	}
+	}
+	}
+	}
