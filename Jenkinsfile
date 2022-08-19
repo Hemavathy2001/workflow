@@ -1,32 +1,36 @@
 pipeline{	
 	agent any
-	 environment {
-		NAME = 'Tom'
-		AGE    = '12'
-        }
-	tools{
-		maven 'Jenkins-maven'
+	environment {
+	NAME = 'Tom'
+	AGE    = '12'
 	}
 	stages{
-		stage("build") {
-			steps{
-			echo 'building the application....'
-			sh "mvn install"
-			}
-		}
-		stage("test") {
-			steps{
-				echo 'testing the application.... '
-				echo " Name is ${NAME} " 
-				echo "Age is ${AGE}"
-				 sh "mvn test"
-			}
-		}
-		stage("deploy") {
-			steps{
-				echo 'deploying the application....'
-				sh "./jenkins/scripts/deliver.sh"
-			     }
-		   }
-       }
-}
+	stage("build") {
+	steps{
+	echo 'building the application....'
+	sh '''
+	echo 'hello world'
+	'''
+	}
+	}
+	stage("test") {
+	steps{
+	echo 'testing the application.... '
+	echo " Name is ${NAME} "
+	echo "Age is ${AGE}"
+	}
+	}
+	stage("deploy") {
+	steps{
+	retry(3){
+	sh 'echo going to work'
+	}
+	
+	timeout(time:3 , unit:'SECONDS'){
+	sh' sleep 5'
+	}
+	echo 'deploying the application....'
+	}
+	}
+	}
+	}
