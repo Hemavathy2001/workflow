@@ -3,11 +3,10 @@ pipeline{
 	 environment {
 		NAME = 'Tom'
 		AGE    = '12'
-       }
-	docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
         }
+	tools{
+		maven 'Jenkins-maven'
+	}
 	stages{
 		stage("build") {
 			steps{
