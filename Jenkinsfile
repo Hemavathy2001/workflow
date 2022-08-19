@@ -11,7 +11,7 @@ pipeline{
 		stage("build") {
 			steps{
 			echo 'building the application....'
-			sh 'mvn install' 
+			sh "mvn install"
 			}
 		}
 		stage("test") {
@@ -19,13 +19,13 @@ pipeline{
 				echo 'testing the application.... '
 				echo " Name is ${NAME} " 
 				echo "Age is ${AGE}"
-				 sh 'mvn test'
+				 sh "mvn test"
 			}
 		}
 		stage("deploy") {
 			steps{
 				echo 'deploying the application....'
-				sh './jenkins/scripts/deliver.sh'
+				sh "./jenkins/scripts/deliver.sh"
 			     }
 		   }
        }
